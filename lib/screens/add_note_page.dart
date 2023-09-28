@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 
 import '../util/note.dart';
@@ -44,7 +45,7 @@ class _AddNotePageState extends State<AddNotePage> {
           ),
         ),
         leading: IconButton(
-          icon:Icon(Icons.arrow_back_rounded),
+          icon:const Icon(Icons.arrow_back_rounded),
           color: Theme.of(context).colorScheme.onPrimaryContainer,
           onPressed: () { Navigator.pop(context); },
         )
@@ -78,15 +79,9 @@ class _AddNotePageState extends State<AddNotePage> {
       child: TextFormField(
         controller: _title,
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8)
-          ),
-          enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent)
-          ),
-          focusedBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent)
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
+          focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
           hintText: 'Title',
           hintStyle: const TextStyle(
             fontSize: 20,
@@ -95,10 +90,9 @@ class _AddNotePageState extends State<AddNotePage> {
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
+            HapticFeedback.vibrate();
             return 'Title should not be empty';
-          } else {
-            return null;
-          }
+          } return null;
         },
         style: TextStyle(
             fontSize: 20,
@@ -116,20 +110,18 @@ class _AddNotePageState extends State<AddNotePage> {
       padding: const EdgeInsets.all(4),
       child: TextFormField(
         controller: _details,
-        decoration: const InputDecoration(
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent)),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent)),
+        decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
+          focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
           hintText: 'Details',
-          hintStyle: TextStyle(fontSize: 16),
+          hintStyle: const TextStyle(fontSize: 16),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
+            HapticFeedback.vibrate();
             return 'Details should not be empty';
-          } else {
-            return null;
-          }
+          } return null;
         },
         style: TextStyle(
             fontSize: 16,

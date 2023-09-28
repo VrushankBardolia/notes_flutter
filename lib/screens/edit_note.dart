@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 
 import '../util/note.dart';
@@ -31,6 +32,7 @@ class _EditNotePageState extends State<EditNotePage> {
   }
 
   deleteAlert(){
+    HapticFeedback.lightImpact();
     return showDialog(
       context: context,
       builder: (BuildContext context){
@@ -59,10 +61,10 @@ class _EditNotePageState extends State<EditNotePage> {
     var notesBox = Hive.box<Note>('notes');
     notesBox.delete(widget.note.key);
     Navigator.pop(context);
+    HapticFeedback.mediumImpact();
     final snackBar = SnackBar(
       content: Text('Note Has Been Deleted',
-        style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
-      ),
+        style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
       backgroundColor: Theme.of(context).colorScheme.primary,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -73,10 +75,10 @@ class _EditNotePageState extends State<EditNotePage> {
     if (isValid) {
       editNote(widget.note, _titleEdit.text, _detailsEdit.text);
       Navigator.of(context).pop();
+      HapticFeedback.mediumImpact();
       final snackBar = SnackBar(
-          content: Text('Note Has Been Changed',
-            style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
-          ),
+        content: Text('Note Has Been Changed',
+          style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
         backgroundColor: Theme.of(context).colorScheme.primary,
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -102,7 +104,7 @@ class _EditNotePageState extends State<EditNotePage> {
             color: Theme.of(context).colorScheme.onPrimaryContainer,)
         ],
         leading: IconButton(
-          icon:Icon(Icons.arrow_back_rounded),
+          icon:const Icon(Icons.arrow_back_rounded),
           color: Theme.of(context).colorScheme.onPrimaryContainer,
           onPressed: () { Navigator.pop(context); },
         )
@@ -123,17 +125,6 @@ class _EditNotePageState extends State<EditNotePage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _editNote,
-        // onPressed: () {
-        //   final isValid = formKey.currentState!.validate();
-        //   if (isValid) {
-        //     editNote(widget.note, _titleEdit.text, _detailsEdit.text);
-        //     Navigator.of(context).pop();
-        //     const snackBar = SnackBar(
-        //       content: Text('Note Has Been Changed')
-        //     );
-        //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        //   }
-        // },
         elevation: 0,
         label: const Text('Save Note'),
         icon: const Icon(Icons.save_rounded),
@@ -147,31 +138,25 @@ class _EditNotePageState extends State<EditNotePage> {
       child: TextFormField(
         controller: _titleEdit,
         decoration: InputDecoration(
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8)
-            ),
-            enabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent)
-            ),
-            focusedBorder: const OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent)
-            ),
-            hintText: 'Title',
-            hintStyle: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600
-            ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
+          focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
+          hintText: 'Title',
+          hintStyle: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600
+          ),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
+            HapticFeedback.vibrate();
             return 'Title should not be empty';
-          }
-          return null;
+          } return null;
         },
         style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            color: Theme.of(context).colorScheme.onSecondaryContainer
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: Theme.of(context).colorScheme.onSecondaryContainer
         ),
         textCapitalization: TextCapitalization.words,
       ),
@@ -183,23 +168,22 @@ class _EditNotePageState extends State<EditNotePage> {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         controller: _detailsEdit,
-        decoration: const InputDecoration(
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent)),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent)),
-            hintText: 'Details',
-            hintStyle: TextStyle(fontSize: 16),
+        decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
+          focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
+          hintText: 'Details',
+          hintStyle: const TextStyle(fontSize: 16),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Title should not be empty';
-          }
-          return null;
+            HapticFeedback.vibrate();
+            return 'Details should not be empty';
+          } return null;
         },
         style: TextStyle(
-            fontSize: 16,
-            color: Theme.of(context).colorScheme.onSecondaryContainer ),
+          fontSize: 16,
+          color: Theme.of(context).colorScheme.onSecondaryContainer ),
         textCapitalization: TextCapitalization.sentences,
         keyboardType: TextInputType.multiline,
         maxLines: null,

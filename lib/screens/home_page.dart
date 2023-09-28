@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../util/note.dart';
@@ -150,6 +151,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         onPressed: () {
+          HapticFeedback.mediumImpact();
           Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => const AddNotePage()));
         },
@@ -161,6 +163,8 @@ class _HomePageState extends State<HomePage> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 4),
       child: ListView.builder(
+        reverse: true,
+        shrinkWrap: true,
         itemCount: box.length,
         itemBuilder: (context,index){
           final note = box.getAt(index);
