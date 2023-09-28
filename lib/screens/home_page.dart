@@ -20,57 +20,6 @@ class _HomePageState extends State<HomePage> {
     Hive.close();
     super.dispose();
   }
-  
-  changeThemeSheet(){
-    return showModalBottomSheet(
-      isScrollControlled: true,
-      context: context,
-      builder: (BuildContext context){
-        return Container(
-          height: 240,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Change Theme",
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w500,
-                      color: Theme.of(context).colorScheme.onBackground
-                    ),
-                  ),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.light_mode_rounded),
-                  title: const Text("Light Mode"),
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.dark_mode_rounded),
-                  title: const Text("Dark Mode"),
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.phone_android_rounded),
-                  title: const Text("System Theme"),
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
-            ),
-          ),
-        );
-      }
-    );
-  }
 
   _showDrawer(){
     return Drawer(
@@ -108,6 +57,40 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget noteList(Box<Note> box){
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 4),
+      child: ListView.builder(
+          reverse: true,
+          shrinkWrap: true,
+          itemCount: box.length,
+          itemBuilder: (context,index){
+            final note = box.getAt(index);
+            return Padding(
+              padding: const EdgeInsets.all(8),
+              child: ListTile(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                textColor: Theme.of(context).colorScheme.onSecondaryContainer,
+                tileColor: Theme.of(context).colorScheme.secondaryContainer,
+                title: Text(note!.title,
+                  style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w600),
+                ),
+                subtitle: Text(note.description,
+                  style: const TextStyle(fontSize: 16),
+                  maxLines: 2,
+                  overflow: TextOverflow.fade,
+                ),
+                onTap: (){
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => EditNotePage(note: note)));
+                },
+              ),
+            );
+          }
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,12 +107,6 @@ class _HomePageState extends State<HomePage> {
             fontSize: 26
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: changeThemeSheet,
-            icon: const Icon(Icons.color_lens_rounded)
-          )
-        ],
       ),
       body: ValueListenableBuilder(
           valueListenable: Hive.box<Note>('notes').listenable(),
@@ -155,40 +132,6 @@ class _HomePageState extends State<HomePage> {
           Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => const AddNotePage()));
         },
-      ),
-    );
-  }
-
-  Widget noteList(Box<Note> box){
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 4),
-      child: ListView.builder(
-        reverse: true,
-        shrinkWrap: true,
-        itemCount: box.length,
-        itemBuilder: (context,index){
-          final note = box.getAt(index);
-          return Padding(
-            padding: const EdgeInsets.all(8),
-            child: ListTile(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              textColor: Theme.of(context).colorScheme.onSecondaryContainer,
-              tileColor: Theme.of(context).colorScheme.secondaryContainer,
-              title: Text(note!.title,
-                style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w600),
-              ),
-              subtitle: Text(note.description,
-                style: const TextStyle(fontSize: 16),
-                maxLines: 2,
-                overflow: TextOverflow.fade,
-              ),
-              onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => EditNotePage(note: note)));
-              },
-            ),
-          );
-        }
       ),
     );
   }

@@ -37,7 +37,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   hive:
   hive_flutter:
-  provider:   
 
 dev_dependencies:
   flutter_test:
