@@ -64,8 +64,8 @@ class _EditNotePageState extends State<EditNotePage> {
     HapticFeedback.mediumImpact();
     final snackBar = SnackBar(
       content: Text('Note Has Been Deleted',
-        style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
-      backgroundColor: Theme.of(context).colorScheme.primary,
+        style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)),
+      backgroundColor: Theme.of(context).colorScheme.secondary,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
@@ -78,8 +78,8 @@ class _EditNotePageState extends State<EditNotePage> {
       HapticFeedback.mediumImpact();
       final snackBar = SnackBar(
         content: Text('Note Has Been Changed',
-          style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+          style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }

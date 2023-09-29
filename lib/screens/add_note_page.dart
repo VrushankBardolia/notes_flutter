@@ -24,9 +24,9 @@ class _AddNotePageState extends State<AddNotePage> {
       Navigator.of(context).pop();
       final snackBar = SnackBar(
         content: Text('Note Has Been Created',
-            style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)
+            style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
