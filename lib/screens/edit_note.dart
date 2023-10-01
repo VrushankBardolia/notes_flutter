@@ -14,11 +14,6 @@ class EditNotePage extends StatefulWidget {
 }
 
 class _EditNotePageState extends State<EditNotePage> {
-  void editNote(Note note, String title, String description) {
-    note.title = title;
-    note.description = description;
-    note.save();
-  }
 
   final formKey = GlobalKey<FormState>();
   final _titleEdit = TextEditingController();
@@ -29,6 +24,12 @@ class _EditNotePageState extends State<EditNotePage> {
     super.initState();
     _titleEdit.text = widget.note.title;
     _detailsEdit.text=widget.note.description;
+  }
+
+  editNote(Note note, String title, String description) {
+    note.title = title;
+    note.description = description;
+    note.save();
   }
 
   deleteAlert(){
@@ -90,6 +91,7 @@ class _EditNotePageState extends State<EditNotePage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Theme.of(context).colorScheme.onPrimaryContainer) ,
         backgroundColor:Theme.of(context).colorScheme.primaryContainer,
         title: Text('Note details',
           style: TextStyle(
@@ -103,11 +105,6 @@ class _EditNotePageState extends State<EditNotePage> {
             icon: const Icon(Icons.delete),
             color: Theme.of(context).colorScheme.onPrimaryContainer,)
         ],
-        leading: IconButton(
-          icon:const Icon(Icons.arrow_back_rounded),
-          color: Theme.of(context).colorScheme.onPrimaryContainer,
-          onPressed: () { Navigator.pop(context); },
-        )
       ),
       body: SingleChildScrollView(
         child: Container(

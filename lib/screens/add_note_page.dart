@@ -37,6 +37,7 @@ class _AddNotePageState extends State<AddNotePage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Theme.of(context).colorScheme.onPrimaryContainer) ,
         backgroundColor:Theme.of(context).colorScheme.primaryContainer,
         title: Text('Create Note',
           style: TextStyle(
@@ -44,11 +45,6 @@ class _AddNotePageState extends State<AddNotePage> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        leading: IconButton(
-          icon:const Icon(Icons.arrow_back_rounded),
-          color: Theme.of(context).colorScheme.onPrimaryContainer,
-          onPressed: () { Navigator.pop(context); },
-        )
       ),
       body: SingleChildScrollView(
         child: Container(
