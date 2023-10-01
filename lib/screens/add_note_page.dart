@@ -38,7 +38,7 @@ class _AddNotePageState extends State<AddNotePage> {
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         backgroundColor:Theme.of(context).colorScheme.primaryContainer,
-        title: Text('Add Note',
+        title: Text('Create Note',
           style: TextStyle(
             color: Theme.of(context).colorScheme.onPrimaryContainer,
             fontWeight: FontWeight.w500,
