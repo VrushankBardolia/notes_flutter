@@ -21,42 +21,6 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  _showDrawer(){
-    return Drawer(
-      child: ListView(
-        children: [
-          UserAccountsDrawerHeader(
-            accountName: Text('Vrushank Bardolia',
-              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
-            ),
-            accountEmail: Text('vrushank1793@gmail.com',
-              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
-            ),
-            currentAccountPicture: CircleAvatar(
-              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-              child: Text('VB',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimaryContainer,
-                  fontSize: 24
-                )
-              ),
-            ),
-          ),
-          // const Padding(
-          //   padding: EdgeInsets.all(16),
-          //   child: Text('This app is Made by\n'
-          //       'VRUSHANK BARDOLIA\n\n'
-          //       'For the Minor Project Of BCA Sem-5',
-          //     style: TextStyle(
-          //       fontSize: 20
-          //     ),
-          //   ),
-          // )
-        ],
-      ),
-    );
-  }
-
   Widget noteList(Box<Note> box){
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 4),
@@ -112,7 +76,15 @@ class _HomePageState extends State<HomePage> {
           valueListenable: Hive.box<Note>('notes').listenable(),
           builder: (context, Box<Note> box, _) {
             if (box.isEmpty) {
-              return const Center(child: Text('You haven\'t added any notes yet!'));
+              return Center(
+                  child: Text('No notes are available 🙃\nWhy Don\'t you Create Note? 👇',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onBackground,
+                      fontSize: 16
+                    ),
+                  )
+              );
             }
             return noteList(box);
           }
@@ -120,7 +92,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton.extended(
         elevation: 0,
         icon: const Icon(Icons.add),
-        label: Text('Add Note',
+        label: Text('Create Note',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
