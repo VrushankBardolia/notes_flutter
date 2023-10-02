@@ -162,7 +162,7 @@ class _EditNotePageState extends State<EditNotePage> {
 
   Widget detailsField() {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(4),
       child: TextFormField(
         controller: _detailsEdit,
         decoration: InputDecoration(

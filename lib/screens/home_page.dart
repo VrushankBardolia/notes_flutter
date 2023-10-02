@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  Widget noteList(Box<Note> box){
+  noteList(Box<Note> box){
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 4),
       child: ListView.builder(
