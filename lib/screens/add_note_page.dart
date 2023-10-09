@@ -86,7 +86,7 @@ class _AddNotePageState extends State<AddNotePage> {
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
-            HapticFeedback.vibrate();
+            HapticFeedback.heavyImpact();
             return 'Title should not be empty';
           } return null;
         },
@@ -115,7 +115,7 @@ class _AddNotePageState extends State<AddNotePage> {
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
-            HapticFeedback.vibrate();
+            HapticFeedback.heavyImpact();
             return 'Details should not be empty';
           } return null;
         },

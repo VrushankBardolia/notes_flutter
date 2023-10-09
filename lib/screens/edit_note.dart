@@ -146,7 +146,7 @@ class _EditNotePageState extends State<EditNotePage> {
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
-            HapticFeedback.vibrate();
+            HapticFeedback.heavyImpact();
             return 'Title should not be empty';
           } return null;
         },
@@ -174,13 +174,13 @@ class _EditNotePageState extends State<EditNotePage> {
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
-            HapticFeedback.vibrate();
+            HapticFeedback.heavyImpact();
             return 'Details should not be empty';
           } return null;
         },
         style: TextStyle(
           fontSize: 16,
-          color: Theme.of(context).colorScheme.onSecondaryContainer ),
+          color: Theme.of(context).colorScheme.onSecondaryContainer),
         textCapitalization: TextCapitalization.sentences,
         keyboardType: TextInputType.multiline,
         maxLines: null,
