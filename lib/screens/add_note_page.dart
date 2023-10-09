@@ -24,7 +24,7 @@ class _AddNotePageState extends State<AddNotePage> {
       Navigator.of(context).pop();
       final snackBar = SnackBar(
         content: Text('Note Has Been Created',
-            style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)
+          style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,
       );
@@ -79,10 +79,7 @@ class _AddNotePageState extends State<AddNotePage> {
           enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
           focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
           hintText: 'Title',
-          hintStyle: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600
-          ),
+          hintStyle: const TextStyle(fontSize: 20,fontWeight: FontWeight.w600),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {

@@ -139,10 +139,7 @@ class _EditNotePageState extends State<EditNotePage> {
           enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
           focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
           hintText: 'Title',
-          hintStyle: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600
-          ),
+          hintStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
@@ -170,7 +167,7 @@ class _EditNotePageState extends State<EditNotePage> {
           enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
           focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
           hintText: 'Details',
-          hintStyle: const TextStyle(fontSize: 16),
+          hintStyle: const TextStyle(fontSize: 18),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
@@ -179,7 +176,7 @@ class _EditNotePageState extends State<EditNotePage> {
           } return null;
         },
         style: TextStyle(
-          fontSize: 16,
+          fontSize: 18,
           color: Theme.of(context).colorScheme.onSecondaryContainer),
         textCapitalization: TextCapitalization.sentences,
         keyboardType: TextInputType.multiline,
