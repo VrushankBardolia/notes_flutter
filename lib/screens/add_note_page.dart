@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
+import 'package:notes_final/components/myDetailsField.dart';
+import 'package:notes_final/components/myTitleField.dart';
 
 import '../util/note.dart';
 
@@ -53,8 +55,8 @@ class _AddNotePageState extends State<AddNotePage> {
             key: formKey,
             child: Column(
               children: [
-                titleField(),
-                detailsField(),
+                MyTitleField(controller: _title,autoFocus: true),
+                MyDetailsField(controller: _details)
               ],
             ),
           ),
@@ -65,63 +67,6 @@ class _AddNotePageState extends State<AddNotePage> {
         elevation: 0,
         icon: const Icon(Icons.save_rounded),
         label: const Text('Save Note', style: TextStyle(fontSize: 16))
-      ),
-    );
-  }
-
-  Widget titleField() {
-    return Padding(
-      padding: const EdgeInsets.all(4),
-      child: TextFormField(
-        controller: _title,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-          enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
-          focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
-          hintText: 'Title',
-          hintStyle: const TextStyle(fontSize: 20,fontWeight: FontWeight.w600),
-        ),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            HapticFeedback.heavyImpact();
-            return 'Title should not be empty';
-          } return null;
-        },
-        style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            color: Theme.of(context).colorScheme.onSecondaryContainer
-        ),
-        autofocus: true,
-        textCapitalization: TextCapitalization.words,
-      ),
-    );
-  }
-
-  Widget detailsField() {
-    return Padding(
-      padding: const EdgeInsets.all(4),
-      child: TextFormField(
-        controller: _details,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-          enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
-          focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
-          hintText: 'Details',
-          hintStyle: const TextStyle(fontSize: 16),
-        ),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            HapticFeedback.heavyImpact();
-            return 'Details should not be empty';
-          } return null;
-        },
-        style: TextStyle(
-            fontSize: 16,
-            color: Theme.of(context).colorScheme.onSecondaryContainer ),
-        textCapitalization: TextCapitalization.sentences,
-        keyboardType: TextInputType.multiline,
-        maxLines: null,
       ),
     );
   }
