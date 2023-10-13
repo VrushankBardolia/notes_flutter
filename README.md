@@ -2,17 +2,15 @@
 
 A new Flutter project.
 
+### Functionalities:
+- Store Notes
+- Dynamic Theming (Adapts theme according to device system theme)
+- Easy To Use
 
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Changelog:
+- **v1.0** (1st-Oct-2023)
+  - Create, Edit & Delete Notes
+  - Dynamic Theme
+  - Hepatic Feedback Implementation
 
 You can get APK file of this project from [here](https://drive.google.com/drive/folders/1rQklfgUbp4JbnXQ-ForzD3bPTHlMjeps?usp=drive_link)
