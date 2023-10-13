@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:notes_final/components/myNoteTile.dart';
 
 import '../util/note.dart';
 import '../screens/add_note_page.dart';
-import '../screens/edit_note.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,27 +29,7 @@ class _HomePageState extends State<HomePage> {
           shrinkWrap: true,
           itemCount: box.length,
           itemBuilder: (context,index){
-            final note = box.getAt(index);
-            return Padding(
-              padding: const EdgeInsets.all(8),
-              child: ListTile(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                textColor: Theme.of(context).colorScheme.onSecondaryContainer,
-                tileColor: Theme.of(context).colorScheme.secondaryContainer,
-                title: Text(note!.title,
-                  style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w600),
-                ),
-                subtitle: Text(note.description,
-                  style: const TextStyle(fontSize: 16),
-                  maxLines: 2,
-                  overflow: TextOverflow.fade,
-                ),
-                onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => EditNotePage(note: note)));
-                },
-              ),
-            );
+            return MyNoteTile(note: box.getAt(index)!);
           }
       ),
     );
