@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
+import 'package:notes_final/components/myDeleteAlert.dart';
 
 import '../components/myDetailsField.dart';
 import '../components/myTitleField.dart';
@@ -39,23 +40,7 @@ class _EditNotePageState extends State<EditNotePage> {
     return showDialog(
       context: context,
       builder: (BuildContext context){
-        return AlertDialog(
-          title: const Text('Delete Note?'),
-          content: const Text('This note will be deleted permanently'),
-          actions: [
-            TextButton(
-              onPressed: (){Navigator.pop(context);},
-              child: const Text('Cancel'),
-            ),
-            FilledButton(
-              onPressed: (){
-                _deleteNote();
-                Navigator.pop(context);
-              },
-              child: const Text('Delete'),
-            )
-          ],
-        );
+        return MyDeleteAlert(onDelete: _deleteNote, component: 'Note',);
       }
     );
   }
