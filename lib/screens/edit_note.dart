@@ -40,7 +40,10 @@ class _EditNotePageState extends State<EditNotePage> {
     return showDialog(
       context: context,
       builder: (BuildContext context){
-        return MyDeleteAlert(onDelete: _deleteNote, component: 'Note',);
+        return MyDeleteAlert(
+          onDelete: _deleteNote,
+          component: 'Note'
+        );
       }
     );
   }
