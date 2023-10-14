@@ -1,6 +1,5 @@
 # Notes App
-
-A new Flutter project.
+This Flutter App Iis The Part Of The Minor Project for TY BCA Sem-5
 
 ### Functionalities:
 - Store Notes
