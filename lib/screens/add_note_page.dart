@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:notes_final/components/myDetailsField.dart';
 import 'package:notes_final/components/myTitleField.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import 'package:notes_final/colors.dart';
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true
       ),
       themeMode: ThemeMode.system,
-      home:HomePage(),
+      home:const HomePage(),
     );
   }
 }
