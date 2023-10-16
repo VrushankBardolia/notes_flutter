@@ -1,6 +1,10 @@
 # Notes App
 This Flutter App Iis The Part Of The Minor Project for TY BCA Sem-5
 
+## Details : 
+- Frontend : Flutter
+- Backend : Hive NoSQL Database
+
 ## Functionalities:
 - Store Notes
 - Dynamic Theming (Adapts theme according to device system theme)
